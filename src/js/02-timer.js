@@ -6,11 +6,11 @@ const daysEl = document.querySelector('.value[data-days]');
 const hoursEl = document.querySelector('.value[data-hours]');
 const minutesEl = document.querySelector('.value[data-minutes]');
 const secondsEl = document.querySelector('.value[data-seconds]');
-const buttonEl = document.querySelector('button[data-start]');
+const startBtn = document.querySelector('button[data-start]');
 const myInput = document.querySelector('#datetime-picker');
 
 let timerIsStarted = false;
-buttonEl.disabled = true;
+startBtn.disabled = true;
 
 const fp = flatpickr(myInput, {
   enableTime: true,
@@ -20,15 +20,15 @@ const fp = flatpickr(myInput, {
   onClose(selectedDates) {
     const dateDiff = selectedDates[0].getTime() - new Date().getTime();
     if (dateDiff > 0 && !timerIsStarted) {
-      buttonEl.disabled = false;
+      startBtn.disabled = false;
 
-      buttonEl.addEventListener('click', () => {
+      startBtn.addEventListener('click', () => {
         startTimer(dateDiff);
         timerIsStarted = true;
-        buttonEl.disabled = true;
+        startBtn.disabled = true;
       });
     } else {
-      buttonEl.disabled = true;
+      startBtn.disabled = true;
       if (timerIsStarted) {
         Notiflix.Notify.failure('Timer is started');
       } else {
