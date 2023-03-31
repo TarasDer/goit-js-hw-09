@@ -10,6 +10,7 @@ const buttonEl = document.querySelector('button[data-start]');
 const myInput = document.querySelector('#datetime-picker');
 
 let timerIsStarted = false;
+buttonEl.disabled = true;
 
 const fp = flatpickr(myInput, {
   enableTime: true,
@@ -66,9 +67,11 @@ function convertMs(ms) {
 
   return { days, hours, minutes, seconds };
 }
+
 function addLeadingZero(value) {
   return value.toString().padStart(2, '0');
 }
+
 function printTime(t) {
   daysEl.textContent = addLeadingZero(t.days);
   hoursEl.textContent = addLeadingZero(t.hours);
