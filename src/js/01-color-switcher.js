@@ -3,6 +3,7 @@ const dataStop = document.querySelector('button[data-stop]');
 const bodyEl = document.querySelector('body');
 
 let timerId = null;
+dataStop.setAttribute('disabled', true);
 
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215)
@@ -10,6 +11,7 @@ function getRandomHexColor() {
     .padStart(6, 0)}`;
 }
 dataStart.addEventListener('click', () => {
+  dataStop.removeAttribute('disabled');
   timerId = setInterval(() => {
     const color = getRandomHexColor();
     bodyEl.style.backgroundColor = color;
@@ -20,4 +22,5 @@ dataStart.addEventListener('click', () => {
 dataStop.addEventListener('click', () => {
   dataStart.removeAttribute('disabled');
   clearInterval(timerId);
+  dataStop.setAttribute('disabled', true);
 });

@@ -19,7 +19,7 @@ function handleSubmit(ev) {
     Notiflix.Notify.failure(`Please enter a correct value`);
   }
 
-  for (i = 1; i <= amount; i += 1) {
+  for (let i = 1; i <= amount; i += 1) {
     position = i;
     createPromise(position, delay)
       .then(({ position, delay }) => {

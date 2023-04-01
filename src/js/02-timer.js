@@ -39,7 +39,7 @@ const fp = flatpickr(myInput, {
 });
 
 function startTimer(milliseconds) {
-  timerId = setInterval(() => {
+  let timerId = setInterval(() => {
     if (milliseconds > 0) {
       printTime(convertMs(milliseconds));
       milliseconds -= 1000;
